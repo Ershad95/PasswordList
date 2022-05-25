@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassList</title>
+    <script src="core.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1> Make Creative Password List </h1>
+            <h5 class="circle">>-</h5>
+        </div>
+        <!-- <button onclick="ProccessAnswers();">Check it</button> -->
+        <div id="carouselExampleDark" class="carousel carousel-dark  slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+
+            </div>
+            <!-- <button class="btn btn-success" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span>Previous</span>
+        </button> -->
+            <div class="center">
+                <button class="btn btn-success center" onclick="Next_op" type="button"
+                    data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span>Next Question</span>
+                </button>
+            </div>
+        </div>
+        <!-- <div class="shadow"></div> -->
+    </div>
+
+    <script>
+        let counter = 1;
+        GetQuestions().forEach(element => {
+            let classNames = "carousel-item";
+            if (counter == 1)
+                classNames += " active";
+            ++counter;
+            document.getElementsByClassName('carousel-inner')[0].innerHTML += `<div class="${classNames}" data-bs-interval="999999999">
+           <div class="height_400">
+            </div>
+            <div class="carousel-caption">
+                <h5>${element} ?</h5>
+                <input id="${element}_id" 
+                class="form-control form-control-lg" 
+                type="text"  
+                aria-label=".form-control-lg example">
+            </div>
+          </div>`;
+        });
+    </script>
+</body>
+
+</html>
