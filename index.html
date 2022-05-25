@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +7,9 @@
     <title>PassList</title>
     <script src="core.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules\@fortawesome\fontawesome-free\js\fontawesome.min.js"></script>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules\@fortawesome\fontawesome-free\css\all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +18,8 @@
             <h1> Make Creative Password List </h1>
             <h5 class="circle">>-</h5>
         </div>
-        <!-- <button onclick="ProccessAnswers();">Check it</button> -->
+        <div class="row" id="qestions">
+             <!-- <button onclick="ProccessAnswers();">Check it</button> -->
         <div id="carouselExampleDark" class="carousel carousel-dark  slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
@@ -27,13 +29,18 @@
             <span>Previous</span>
         </button> -->
             <div class="center">
-                <button class="btn btn-success center" onclick="Next_op" type="button"
+                <button class="btn btn-success center" onclick="Next_op();" type="button"
                     data-bs-target="#carouselExampleDark" data-bs-slide="next">
                     <span>Next Question</span>
                 </button>
             </div>
         </div>
         <!-- <div class="shadow"></div> -->
+        </div>
+        <div class="row center d-none" id="loading">
+            <h5>Please Wait...</h5>
+            <i class="fa fa-5x fa-spinner center fa-spin "></i>
+        </div>
     </div>
 
     <script>
@@ -43,7 +50,8 @@
             if (counter == 1)
                 classNames += " active";
             ++counter;
-            document.getElementsByClassName('carousel-inner')[0].innerHTML += `<div class="${classNames}" data-bs-interval="999999999">
+        document.getElementsByClassName('carousel-inner')[0].innerHTML +=
+             `<div class="${classNames}" data-bs-interval="999999999">
            <div class="height_400">
             </div>
             <div class="carousel-caption">
